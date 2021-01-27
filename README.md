@@ -121,27 +121,27 @@ The structure of the JSON file is needed as following:
 ```
 
 ### Server
-* "Servername" : "<SERVERNAME that is used internaly for generating config files>",
-* "ServerPhyInt" : "<Physical interface that connects to the external world, needed for NAT configuration>",
-* "ServerVirInt" : "<wireguard interface internally>",
-* "Address" : "<INTERFACE IP of teh wireguard interface>",
-* "ListenPort" : "<port which wireguard is running on>",
-* "ServerPrivateKey" : "<Serer private key>",
-* "PostUp" : "<NAT command when the wireguard interface comes up>",
-* "PostDown" : "<NAT command when the wireguard interface comes down>",
-* "FQDN" : "<FQDN / DYN DNS / IP - of the external interface, used to allow clients to connect>",
-* "SSHKey" : "<SSH Key name used for accessing remote machines, they have to be in the ./keys folder ending with .priv>",
-* "AdminIP" : "<Maanagment IP or FQDN for administrative access>",
-* "SSHPort" : "<SSH Port>",
-* "SSHUser" : "<access user>"
+* "Servername" : "SERVERNAME that is used internaly for generating config files>,
+* "ServerPhyInt" : "Physical interface that connects to the external world, needed for NAT configuration",
+* "ServerVirInt" : "wireguard interface internally",
+* "Address" : "INTERFACE IP of teh wireguard interface",
+* "ListenPort" : "port which wireguard is running on",
+* "ServerPrivateKey" : "Serer private key",
+* "PostUp" : "NAT command when the wireguard interface comes up",
+* "PostDown" : "NAT command when the wireguard interface comes down",
+* "FQDN" : "FQDN / DYN DNS / IP - of the external interface, used to allow clients to connect",
+* "SSHKey" : "SSH Key name used for accessing remote machines, they have to be in the ./keys folder ending with .priv",
+* "AdminIP" : "Maanagment IP or FQDN for administrative access",
+* "SSHPort" : "SSH Port",
+* "SSHUser" : "access user"
 
 ### Client
-* "ClientName" : "<client name>",
-* "User" : "<email address / Username>",
-* "TunnelIP" : "<Last octet for teh client IP>",
-* "ClientPrivateKey" : "<Client Private Key>",
-* "PresharedKey" : "<Pre shared key for additional secruity>",
-* "AllowedIPs" : "<networks that shall be reached>"
+* "ClientName" : "client name",
+* "User" : "email address / Username",
+* "TunnelIP" : "Last octet for teh client IP",
+* "ClientPrivateKey" : "Client Private Key",
+* "PresharedKey" : "Pre shared key for additional secruity",
+* "AllowedIPs" : "networks that shall be reached"
 
 
 ## Usage 
