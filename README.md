@@ -1,13 +1,13 @@
-# Wireguard CLI management tool
+ # Wireguard CLI management tool
 This tool a collection of different bash scripts to create configuration files for 
 wireguard servers and clients. 
-All configuration items ares tored within a json file that currently needs to be managed
+All configuration items are stored within a json file that currently needs to be managed
 manually.
 
 ## Requirements
 What is needed to make it work:
-1. a SSH privat key per Server (or the same on each remote VPN server (not recommended))
-2. 
+1. servers with wireguard isntalled, an environement where configs are sotred in /etc/wireguard
+2. a SSH privat key per Server (or the same on each remote VPN server (not recommended))
 
 
 ### Packets
@@ -173,12 +173,7 @@ Whereas the interface configs are change a restart es needed.
 ```bash
 wg-adm.sh restart
 ```
-Putting down the wierguard interface and putting it back up.
-
-
-
-
-
+Putting down the wierguard interface and putting it back up on the remote servers.
 
 
 ## Known issues
