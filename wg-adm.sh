@@ -15,6 +15,8 @@ JFILE="wg.json"
 BASEDIR=$(pwd)
 # Configuration Folder
 CFG="CFG"
+# Folder for Backup files (can be changed)
+BCK="BCK"
 # Full Path to the config folder
 CDIR=$BASEDIR"/"$CFG
 # applied DNS Servers via VPN
@@ -25,7 +27,7 @@ DNSSRV="8.8.8.8"
 #
 . $BASEDIR/src/./wg-adm-generate.sh
 . $BASEDIR/src/./wg-adm-update.sh
-
+. $BASEDIR/src/./wg-adm-json-entry.sh
 
 #
 # Main Program
@@ -34,20 +36,61 @@ DNSSRV="8.8.8.8"
 case $1 in
     generate)
 	   echo ""
+	   echo "##############################################################"
+	   echo "##                                                          ##"
+	   echo "##    Starting to generate server configuration files       ##"
+	   echo "##                                                          ##"
+	   echo "##############################################################"
+	   echo ""
 	   wggenerate
 	   echo " ... DONE ..."
        ;;
     init)
-	   echo "Initialize server"
+	   echo ""
+	   echo "##############################################################"
+	   echo "##                                                          ##"
+	   echo "##    Initialize the toolkit environment                    ##"
+	   echo "##                                                          ##"
+	   echo "##############################################################"
+	   echo ""
+	   # create backup folder
+	   mkdir $BASEDIR/$BCK
+	   # create config file
+	   touch $JFILE
 	   wginit
        ;;
     update)
-	   echo "Initialize server"
-	   wgupdate
+	    echo ""
+		echo "##############################################################"
+		echo "##                                                          ##"
+		echo "##    updateing configuration files of VPN Servers          ##"
+		echo "##                                                          ##"
+		echo "##############################################################"
+		echo ""
+	    wgupdate
+		echo " ... DONE ..."
        ;;
     restart)
-	   echo "Initialize server"
-	   wgrestart
+	    echo ""
+		echo "##############################################################"
+		echo "##                                                          ##"
+		echo "##    restart wiregueard interfaces on all servers          ##"
+		echo "##                                                          ##"
+		echo "##############################################################"
+		echo ""
+	    wgrestart
+	   echo " ... DONE ..."
+       ;;
+    client)
+	    echo ""
+		echo "##############################################################"
+		echo "##                                                          ##"
+		echo "##    Creating a client entry                               ##"
+		echo "##                                                          ##"
+		echo "##############################################################"
+		echo ""
+	   wgmakeclt
+	   echo " ... DONE ..."
        ;;
     *)
 	   echo "Help:"

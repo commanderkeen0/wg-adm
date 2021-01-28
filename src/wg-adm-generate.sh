@@ -11,13 +11,6 @@ function wggenerate {
  
   if [ "$CHK_JSON" = "OK" ];
    then
-  	echo ""
-	echo "##############################################################"
-	echo "##                                                          ##"
-	echo "##    Starting to generate server configuration files       ##"
-	echo "##                                                          ##"
-	echo "##############################################################"
-	echo ""
 		
 	# create config folders
 	if [ -d "$CDIR" ]; then

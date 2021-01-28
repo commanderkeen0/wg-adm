@@ -1,0 +1,62 @@
+{
+  "Server":[
+    {
+	 "Servername" : "wgs1",
+	 "ServerPhyInt" : "enp0s3",
+	 "ServerVirInt" : "wg0",
+	 "Address" : "10.11.1.1/24",
+     "ListenPort" : "51820",
+     "ServerPrivateKey" : "KIl1BGc+cWXXFVnj5waufVzKWJ3Q123u5niI/TzV6lg=",
+	 "PostUp" : "PostUp = iptables -A FORWARD -i %i -j ACCEPT; iptables -t nat -A POSTROUTING -o INT -j MASQUERADE",
+     "PostDown" : "PostDown = iptables -D FORWARD -i %i -j ACCEPT; iptables -t nat -D POSTROUTING -o INT -j MASQUERADE",
+	 "FQDN" : "172.23.20.179",
+	 "SSHKey" : "wgs1",
+	 "AdminIP" : "172.23.20.180",
+	 "SSHPort" : "22",
+	 "SSHUser" : "root"
+	},
+    { 
+	 "Servername" : "wgs2",
+	 "ServerPhyInt" : "enp0s3",
+	 "ServerVirInt" : "wg0",
+	 "Address" : "10.2.3.1/24",
+     "ListenPort" : "51820",
+     "ServerPrivateKey" : "GEjYMlkcGK6LsUBq3w6HDqtHzmDYiiUNP0tWB7LdqlM=",
+	 "PostUp" : "PostUp = iptables -A FORWARD -i %i -j ACCEPT; iptables -t nat -A POSTROUTING -o INT -j MASQUERADE",
+     "PostDown" : "PostDown = iptables -D FORWARD -i %i -j ACCEPT; iptables -t nat -D POSTROUTING -o INT -j MASQUERADE",
+	 "FQDN" : "172.23.20.180",
+	 "SSHKey" : "wgs2",
+	 "AdminIP" : "172.23.20.179",
+	 "SSHPort" : "22",
+	 "SSHUser" : "root"
+	}
+  ],
+  "Client": [
+    {
+      "ClientName" : "clt1",
+	  "User" : "clt1@mydomain.corp",
+	  "TunnelIP" : "11",
+	  "ClientPrivateKey" : "UIbq4Z6hl5ZE+UemaE6q16WehcL8C7X0B8ZoAyTnx3Y=",
+	  "PresharedKey" : "+9hiljPxWZjonvIqdco3q73875L91c4pqP+DM7vBUfU=",
+	  "AllowedIPs" : "0.0.0.0/0, ::/0"
+	},
+    {
+      "ClientName" : "clt2",
+	  "User" : "clt2@mydomain.corp",
+	  "TunnelIP" : "12",
+	  "ClientPrivateKey" : "OMTEOu6PzXraGoEgxZLo55QUMJ2uoVVGRLzeJfuw+HQ=",
+	  "PresharedKey" : "P6r8veq4JUUkKdQkw20k2GvwoUCNLNLwb0oDvGYJcK8=",
+	  "AllowedIPs" : "0.0.0.0/0, ::/0"
+	},
+    {
+      "ClientName" : "clt3",
+	  "User" : "clt3@mydomain.corp",
+	  "TunnelIP" : "13",
+	  "ClientPrivateKey" : "APjFfGvS2+b5woCbp0gnHpRSZrDDXZAQ1o9wBtvAkW4=",
+	  "PresharedKey" : "cTmFlWyFwM99bB9vmZ4CBSke3XHTAq4sICNW5kuPYGU=",
+	  "AllowedIPs" : "0.0.0.0/0, ::/0"
+	}
+
+  ]
+
+}

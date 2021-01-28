@@ -57,21 +57,13 @@
     "AllowedIPs": "0.0.0.0/0, ::/0"
   },
   {
-    "ClientName": "123",
-    "User": "123",
-    "TunnelIP": "123",
-    "ClientPrivateKey": "kKG0eboB3HzWHqJxMaMfiAtWzVTdGPv8mHptFcvatV4=",
-    "PresharedKey": "cUNbLcz6UcNfISpq57yRP1rCuU0yd2+AtN5JLx4SESM=",
-    "AllowedIPs": "0.0.0.0/0, ::/0"
-  },
-  {
-    "ClientName" : "peter",
-    "User" : "peter",
-    "TunnelIP" : "54",
-    "ClientPrivateKey" : "SCcaiikXCnDewbDhbvcIFPTDNSGGKthMuWavzGdVxGs=",
-    "PresharedKey" : "QcoE2W27TFoVucBUk73fyEmL2X5tEDjSlRmWp4AwMr4=",
+    "ClientName" : "ctl4",
+    "User" : "ctl4@mycompany.corp",
+    "TunnelIP" : "14",
+    "ClientPrivateKey" : "kKG0eboB3HzWHqJxMaMfiAtWzVTdGPv8mHptFcvatV4=",
+    "PresharedKey" : "cUNbLcz6UcNfISpq57yRP1rCuU0yd2+AtN5JLx4SESM=",
     "AllowedIPs" : "0.0.0.0/0, ::/0"
   }
  ]
 }
-  
+

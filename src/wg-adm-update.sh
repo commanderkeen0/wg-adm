@@ -12,13 +12,6 @@ function wgupdate {
  
   if [ "$CHK_JSON" = "OK" ];
    then
-  	echo ""
-	echo "##############################################################"
-	echo "##                                                          ##"
-	echo "##    updateing configuration files of VPN Servers          ##"
-	echo "##                                                          ##"
-	echo "##############################################################"
-	echo ""
 		
 	# star getting data of teh server
 	SRV=$(echo $JSON | jq '.Server' | jq length)
@@ -64,16 +57,8 @@ function wgupdate {
 echo " ... DONE ..."
 }
 
-
+# restart wg service on the remote servers
 function wgrestart {
-  
-  	echo ""
-	echo "##############################################################"
-	echo "##                                                          ##"
-	echo "##    updateing configuration files of VPN Servers          ##"
-	echo "##                                                          ##"
-	echo "##############################################################"
-	echo ""
 	
   # get the JSON file into avariable
   JSON=$(cat $JFILE)

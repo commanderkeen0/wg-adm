@@ -185,7 +185,7 @@ Putting down the wierguard interface and putting it back up on the remote server
 * no explicit IPv6 support
 * PSK needed for client configuration
 * config fils are not check if they contain updates, they are transfered and update is executed
-* no checking of client names / server names
+* no checking of client names / server names - only no space names are supported
 
 
 
