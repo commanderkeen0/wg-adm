@@ -101,7 +101,15 @@ echo "test"
   read -p "Do you wish to update the JSON file? Yes/No :" yn
   case $yn in
       [Yy]*) 
-	     mv $BASEDIR/$JFILE $BASEDIR/$BCK/$(date +%Y%m%d_%H%M%S)_$JFILE 
+	  	# create config folders
+	    if [ -d "$BASEDIR/$BCK" ]; then
+          echo "Backup Directory ready: $BASEDIR/$BCK"
+	    else
+	      echo "Backup directory created: $BASEDIR/$BCK"
+	      mkdir -p $BASEDIR/$BCK
+        fi   
+		 
+		 mv $BASEDIR/$JFILE $BASEDIR/$BCK/$(date +%Y%m%d_%H%M%S)_$JFILE 
          echo "$NEWJSON" > $BASEDIR/$JFILE
 		 echo "File updated"
         ;;

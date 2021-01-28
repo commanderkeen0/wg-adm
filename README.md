@@ -178,7 +178,7 @@ Putting down the wierguard interface and putting it back up on the remote server
 
 ## Known issues
 * Error handling needs to be improved
-* no JSON creation tool 
+* no JSON management tool tool 
 * usage of root user for deployment
 * only one wireguard interface supported
 * only networks smaller /24 networks supported as ip generation is just taking the first three octets from the server internal IP
@@ -187,6 +187,8 @@ Putting down the wierguard interface and putting it back up on the remote server
 * config fils are not check if they contain updates, they are transfered and update is executed
 * no checking of client names / server names - only no space names are supported
 
+## Solved
+* Client config creation tool added
 
 
 # License

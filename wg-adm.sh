@@ -49,15 +49,12 @@ case $1 in
 	   echo ""
 	   echo "##############################################################"
 	   echo "##                                                          ##"
-	   echo "##    Initialize the toolkit environment                    ##"
+	   echo "##    Initialize an interface onm th remote server          ##"
 	   echo "##                                                          ##"
 	   echo "##############################################################"
 	   echo ""
-	   # create backup folder
-	   mkdir $BASEDIR/$BCK
-	   # create config file
-	   touch $JFILE
-	   wginit
+	   echo "UNDER DEVELOPMENT"
+
        ;;
     update)
 	    echo ""
