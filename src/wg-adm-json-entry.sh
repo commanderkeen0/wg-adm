@@ -38,7 +38,7 @@ x=0
 while [ $x -le 1 ]
 do
  read -p 'Endpoint Name (no spaces or special characters): ' ClientName
- [[ "$ClientName" =~ [^a-zA-Z0-9] ]] && x=0 || x=2
+ [[ "$ClientName" =~ [^a-zA-Z0-9\-_] ]] && x=0 || x=2
 done
 
 # Read Username Name
