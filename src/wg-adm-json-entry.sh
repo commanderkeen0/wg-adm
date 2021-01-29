@@ -39,7 +39,7 @@ x=0
 while [ $x -le 1 ]
 do
  read -p 'Enter Username (email): ' UserName
- [[ "$UserName" =~ [^a-zA-Z0-9.@] ]] && x=0 || x=2
+ [[ "$UserName" =~ [^a-zA-Z0-9.@\-_] ]] && x=0 || x=2
 done
 
 # Read last octet
