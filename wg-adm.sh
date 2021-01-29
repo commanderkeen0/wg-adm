@@ -42,6 +42,7 @@ DNSSRV="8.8.8.8"
 . $BASEDIR/src/./wg-adm-generate.sh
 . $BASEDIR/src/./wg-adm-update.sh
 . $BASEDIR/src/./wg-adm-json-entry.sh
+. $BASEDIR/src/./wg-adm-init.sh
 
 ##############################################################################################
 
@@ -81,147 +82,45 @@ function check_json {
 
 case $1 in
     generate)
-       echo ""
-       echo "##############################################################"
-       echo "##                                                          ##"
-       echo "##    Starting to generate server configuration files       ##"
-       echo "##                                                          ##"
-       echo "##############################################################"
-       echo ""
        wggenerate
        echo " ... DONE ..."
        ;;
     init)
-       echo ""
-       echo "##############################################################"
-       echo "##                                                          ##"
-       echo "##    Initialize an interface on a remote server            ##"
-       echo "##                                                          ##"
-       echo "##############################################################"
-       echo ""
-       echo "UNDER DEVELOPMENT"
+       wginit
+	   echo " ... DONE ..."
        ;;
     update)
-        echo ""
-        echo "##############################################################"
-        echo "##                                                          ##"
-        echo "##    updateing configuration files of VPN Servers          ##"
-        echo "##                                                          ##"
-        echo "##############################################################"
-        echo ""
         wgupdate
         echo " ... DONE ..."
        ;;
     restart)
-        echo ""
-        echo "##############################################################"
-        echo "##                                                          ##"
-        echo "##    restart wiregueard interfaces on all servers          ##"
-        echo "##                                                          ##"
-        echo "##############################################################"
-        echo ""
         wgrestart
        echo " ... DONE ..."
        ;;
     addclient)
-        echo ""
-        echo "##############################################################"
-        echo "##                                                          ##"
-        echo "##    Creating a client entry and adding to the json file   ##"
-        echo "##                                                          ##"
-        echo "##############################################################"
-        echo ""
-       wgmakeclt
+       wgaddclient
        echo " ... DONE ..."
        ;;
     setup)
-        echo ""
-        echo "##############################################################"
-        echo "##                                                          ##"
-        echo "##    Create the initial environment                        ##"
-        echo "##                                                          ##"
-        echo "##############################################################"
-        echo ""
-       
-           # create config folders
-        if [ -d "$CDIR" ]; then
-          echo "Configuration directory cleared: $CDIR"
-          rm -rf $CDIR/*
-        else
-          echo "Configuration directory created: $CDIR"
-          mkdir -p $CDIR
-        fi 
-      
-        # create config folders
-        if [ -d "$BASEDIR/$BCK" ]; then
-          echo "Backup directory cleared: $BASEDIR/$BCK"
-          rm -rf $BASEDIR/$BCK/*
-        else
-          echo "Configuration directory created: $BASEDIR/$BCK"
-          mkdir -p $BASEDIR/$BCK
-        fi
-      
-        # create config folders
-        if [ -d "$BASEDIR/$KEYS" ]; then
-          echo "Backup directory cleared: $BASEDIR/$KEYS"
-          rm -rf $BASEDIR/$KEYS/*
-        else
-          echo "Configuration directory created: $BASEDIR/$KEYS"
-          mkdir -p $BASEDIR/$KEYS
-        fi
-       
-       # check wireguard
-       if [[ -f "$(which wg)" ]]; 
-        then
-         echo "wireguard: installed"
-        else
-         echo ""
-         echo "##############################################################"
-         echo "##                                                          ##"
-         echo "##    Wireguad package is not found                         ##"
-         echo "##    Please install the coresponding package               ##"
-         echo "##                                                          ##"
-         echo "##############################################################"
-         echo ""
-        fi
-       
-       # check jq
-       if [[ -f "$(which jq)" ]]; 
-        then
-         echo "jq - JSON QUERY for bash is installed"
-        else
-         echo ""
-         echo "##############################################################"
-         echo "##                                                          ##"
-         echo "##    jq package is not found                               ##"
-         echo "##    Please install the coresponding package               ##"
-         echo "##                                                          ##"
-         echo "##############################################################"
-         echo ""
-        fi
-       
+       wgadmsetup    
        echo " ... DONE ..."
        ;;
     *)
-       echo "Help:"
-       echo "Available commands: generate / init / update"
-       ;;
+echo "
+
+Your command $1 is not recognized
+
+The folloing commands are valid:
+
+Server management
+  ./wg-adm.sh generate - generate your config files
+  ./wg-adm.sh update - add additional client to your server
+  ./wg-adm.sh restart - bring your virtual interface down and up on your servers
+Client management
+  ./wg-adm.sh addclient - add aditional clients to the existing json file
+Tool
+  ./wg-adm.sh setup - check your environment and create needed folders"
+     ;;
 esac
 
 echo ""
-echo ""
-
-
-
-#ToDo
-# PSK check if not existing
-# IPv6 implementation
-# 
-
-# Sources:
-# wg addconf wg0 <(wg-quick strip wg0)
-# cat wg.json | jq  2>&1 | awk '{ print $1 " " $2 }'
-# https://www.reddit.com/r/WireGuard/comments/fodgpi/adding_peer_without_having_to_restart_service/
-# https://www.antary.de/2020/04/09/raspberry-pi-installation-und-betrieb-von-wireguard/
-# https://www.wireguardconfig.com/
- 

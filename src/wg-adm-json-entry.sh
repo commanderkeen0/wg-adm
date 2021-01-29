@@ -20,7 +20,14 @@
 # "SSHUser" : "access user"
 
 
-function wgmakeclt {
+function wgaddclient {
+echo ""
+echo "##############################################################"
+echo "##                                                          ##"
+echo "##    Creating a client entry and adding to the json file   ##"
+echo "##                                                          ##"
+echo "##############################################################"
+echo ""
 #
 # read entry
 #

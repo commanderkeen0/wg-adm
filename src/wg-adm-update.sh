@@ -3,14 +3,17 @@
 # Initialise wireguard server based on input file
 #
 function wgupdate {
- # 1.
+  echo ""
+  echo "##############################################################"
+  echo "##                                                          ##"
+  echo "##    updateing configuration files of VPN Servers          ##"
+  echo "##                                                          ##"
+  echo "##############################################################"
+  echo ""
   # get the JSON file into avariable
   check_json
   S=0
   
-  if [ "$CHK_JSON" = "OK" ];
-   then
-		
 	# star getting data of teh server
 	SRV=$(echo $JSON | jq '.Server' | jq length)
 	SRV=$(( $SRV - 1 ))
@@ -49,15 +52,18 @@ function wgupdate {
 	  fi
 	  S=$(( $S + 1 ))
 	 done
-   else
-   	echo "JSON input file has errors"
-  fi
 echo ""
 }
 
 # restart wg service on the remote servers
 function wgrestart {
-	
+  echo ""
+  echo "##############################################################"
+  echo "##                                                          ##"
+  echo "##    restart wiregueard interfaces on all servers          ##"
+  echo "##                                                          ##"
+  echo "##############################################################"
+  echo ""	
   # get the JSON file into avariable
   check_json
   S=0

@@ -3,6 +3,13 @@
 # Generate wireguard configs
 #
 function wggenerate {
+  echo ""
+  echo "##############################################################"
+  echo "##                                                          ##"
+  echo "##    Starting to generate server configuration files       ##"
+  echo "##                                                          ##"
+  echo "##############################################################"
+  echo ""
   # get the JSON file into avariable
   check_json
   S=0

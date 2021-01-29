@@ -273,3 +273,11 @@ Add additional client to the json file.
 
 # License
 [MIT](https://choosealicense.com/licenses/mit/)
+
+# Sources:
+[Wireguard restart without interruption](https://www.reddit.com/r/WireGuard/comments/fodgpi/adding_peer_without_having_to_restart_service/)
+[Wireguard on Raspberry Pi](https://www.antary.de/2020/04/09/raspberry-pi-installation-und-betrieb-von-wireguard/)
+[Wiregurad configuration webpage](https://www.wireguardconfig.com/)
+[Wireguard quickstart](https://www.wireguard.com/quickstart/)
+[Wireguard HowTo - UPCLOUD](https://upcloud.com/community/tutorials/get-started-wireguard-vpn/)
+ 
