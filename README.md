@@ -156,14 +156,16 @@ The structure of the JSON file is needed as following:
 # Installation
 How to get this tool working? 
 
-## set json file
+## setup your json file
 ```bash
 # JSON input file
 JFILE="wg0.json"
 ```
 This file contains the configuration of a single wireguard interface. 
-Multiple filed can support different interfaces.
+A smaple file is added in the wg-adm folder. Ensure that it is setup correctly.
 
+
+Multiple filed can support different interfaces.
  ** MULTI INTERFACE is under development **
 
 ## configure your folders in wg-adm.sh

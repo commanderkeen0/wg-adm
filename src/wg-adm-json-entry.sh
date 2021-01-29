@@ -78,9 +78,12 @@ echo "$NewClient"
 
 ###################################################################
 
-echo "test"
-
-  JSON=$(cat $JFILE)
+  if [[ ! -f "$BASEDIR/$JFILE" ]]; 
+   then
+    echo "File missing"
+    exit
+  fi
+  JSON=$(cat $BASEDIR/$JFILE)
   S=0
   # check if the JSON file is OK
   CHK_JSON=$(echo $JSON | python3 -c "import sys,json;json.loads(sys.stdin.read());print('OK')")

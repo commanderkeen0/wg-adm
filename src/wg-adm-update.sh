@@ -5,7 +5,12 @@
 function wgupdate {
  # 1.
   # get the JSON file into avariable
-  JSON=$(cat $JFILE)
+  if [[ ! -f "$BASEDIR/$JFILE" ]]; 
+   then
+    echo "File missing"
+    exit
+  fi
+  JSON=$(cat $BASEDIR/$JFILE)
   S=0
   # check if the JSON file is OK
   CHK_JSON=$(echo $JSON | python3 -c "import sys,json;json.loads(sys.stdin.read());print('OK')")
@@ -61,7 +66,12 @@ echo ""
 function wgrestart {
 	
   # get the JSON file into avariable
-  JSON=$(cat $JFILE)
+  if [[ ! -f "$BASEDIR/$JFILE" ]]; 
+   then
+    echo "File missing"
+    exit
+  fi
+  JSON=$(cat $BASEDIR/$JFILE)
   S=0
   # check if the JSON file is OK
   CHK_JSON=$(echo $JSON | python3 -c "import sys,json;json.loads(sys.stdin.read());print('OK')")
