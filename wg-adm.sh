@@ -43,6 +43,21 @@ DNSSRV="8.8.8.8"
 . $BASEDIR/src/./wg-adm-update.sh
 . $BASEDIR/src/./wg-adm-json-entry.sh
 
+
+#
+# generall functions
+#
+
+function check_json {
+  if [[ ! -f "$BASEDIR/$JFILE" ]]; 
+   then
+    echo "$BASEDIR/$JFILE - File is missing !"
+    exit
+  fi
+}
+
+check_json
+
 #
 # Main Program
 #

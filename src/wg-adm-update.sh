@@ -5,11 +5,7 @@
 function wgupdate {
  # 1.
   # get the JSON file into avariable
-  if [[ ! -f "$BASEDIR/$JFILE" ]]; 
-   then
-    echo "JSON File missing"
-    exit
-  fi
+  check_json
   JSON=$(cat $BASEDIR/$JFILE)
   S=0
   # check if the JSON file is OK
@@ -66,11 +62,7 @@ echo ""
 function wgrestart {
 	
   # get the JSON file into avariable
-  if [[ ! -f "$BASEDIR/$JFILE" ]]; 
-   then
-    echo "JSON File missing"
-    exit
-  fi
+  check_json
   JSON=$(cat $BASEDIR/$JFILE)
   S=0
   # check if the JSON file is OK

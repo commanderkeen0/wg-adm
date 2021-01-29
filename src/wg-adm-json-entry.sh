@@ -26,12 +26,7 @@ function wgmakeclt {
 # read entry
 #
 # check for json file available
-  if [[ ! -f "$BASEDIR/$JFILE" ]]; 
-   then
-    echo "JSON File missing"
-    exit
-  fi
-
+check_json
 
 # Read Endpoint Name
 x=0
