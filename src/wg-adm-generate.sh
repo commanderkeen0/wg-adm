@@ -5,20 +5,14 @@
 function wggenerate {
   # get the JSON file into avariable
   check_json
-  JSON=$(cat $BASEDIR/$JFILE)
   S=0
-  # check if the JSON file is OK
-  CHK_JSON=$(echo $JSON | python3 -c "import sys,json;json.loads(sys.stdin.read());print('OK')")
- 
-  if [ "$CHK_JSON" = "OK" ];
-   then
 		
 	# create config folders
 	if [ -d "$CDIR" ]; then
-      echo "Configuration directory cleared: ${CDIR}"
+      echo "Configuration directory cleared: $CDIR"
 	  rm -rf $CDIR/*
     else
-	  echo "Configuration directory created: ${CDIR}"
+	  echo "Configuration directory created: $CDIR"
 	  mkdir -p $CDIR
     fi
 	
@@ -115,10 +109,6 @@ function wggenerate {
 	  #echo "..."
 	  S=$(( $S + 1 ))
 	 done
-
-   else
-   	echo "JSON input file has errors"
-  fi
 
 echo "##############################################################"
 }

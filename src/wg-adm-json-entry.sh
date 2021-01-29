@@ -80,13 +80,11 @@ echo "$NewClient"
 
 ###################################################################
 
-  JSON=$(cat $BASEDIR/$JFILE)
-  S=0
+  #JSON=$(cat $BASEDIR/$JFILE)
   # check if the JSON file is OK
-  CHK_JSON=$(echo $JSON | python3 -c "import sys,json;json.loads(sys.stdin.read());print('OK')")
- 
-  if [ "$CHK_JSON" = "OK" ];
-   then
+  #CHK_JSON=$(echo $JSON | python3 -c "import sys,json;json.loads(sys.stdin.read());print('OK')")
+  S=0
+
     JSONSRV=$(echo $JSON | jq '.Server' | head -n-1)
 	JSONCLT=$(echo $JSON | jq '.Client' | head -n-2)
 	NEWJSON="{
@@ -119,8 +117,6 @@ echo "$NewClient"
 	    ;;
   esac
  
-  fi
-	
 
 	
 }

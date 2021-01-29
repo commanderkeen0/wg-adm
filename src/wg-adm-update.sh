@@ -6,11 +6,8 @@ function wgupdate {
  # 1.
   # get the JSON file into avariable
   check_json
-  JSON=$(cat $BASEDIR/$JFILE)
   S=0
-  # check if the JSON file is OK
-  CHK_JSON=$(echo $JSON | python3 -c "import sys,json;json.loads(sys.stdin.read());print('OK')")
- 
+  
   if [ "$CHK_JSON" = "OK" ];
    then
 		
@@ -63,13 +60,8 @@ function wgrestart {
 	
   # get the JSON file into avariable
   check_json
-  JSON=$(cat $BASEDIR/$JFILE)
   S=0
-  # check if the JSON file is OK
-  CHK_JSON=$(echo $JSON | python3 -c "import sys,json;json.loads(sys.stdin.read());print('OK')")
-
-  if [ "$CHK_JSON" = "OK" ];
-   then	
+	
 	# star getting data of teh server
 	SRV=$(echo $JSON | jq '.Server' | jq length)
 	SRV=$(( $SRV - 1 ))
@@ -95,8 +87,5 @@ function wgrestart {
 		 echo ""
 	  S=$(( $S + 1 ))
 	 done
-   else
-   	echo "JSON input file has errors"
-  fi
 echo ""
 }

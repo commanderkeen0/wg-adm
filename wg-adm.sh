@@ -53,10 +53,24 @@ function check_json {
    then
     echo "$BASEDIR/$JFILE - File is missing !"
     exit
+  else
+    JSON=$(cat $BASEDIR/$JFILE)
+    # check if the JSON file is OK
+    CHK_JSON=$(echo $JSON | python3 -c "import sys,json;json.loads(sys.stdin.read());print('OK')")
+    if [ "$CHK_JSON" = "OK" ];
+     then
+	   echo "JSON File Syntax okay"
+	   echo ""
+	else
+	 echo ""
+	 echo ""
+	 echo "JSON File syntax not okay"
+	 echo ""
+	 echo ""
+	 exit
+	fi
   fi
 }
-
-check_json
 
 #
 # Main Program
