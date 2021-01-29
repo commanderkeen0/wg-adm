@@ -1,14 +1,18 @@
 #!/bin/bash
 #
 # wireguard administration tool
+#
 # author: Philipp G.
-#
+# email: gmastap@gmail.com
 #
 
 
 #
-# Variables
+# Variables to be configured
 #
+
+
+#########################  Modify variables below  ###########################################
 # JSON input file
 JFILE="wg0.json"
 # Basedir where the script resides
@@ -17,10 +21,20 @@ BASEDIR=$(pwd)
 CFG="CFG"
 # Folder for Backup files (can be changed)
 BCK="BCK"
+# filder that hosts the SSH keys to the other servers
+KEYS="keys"
 # Full Path to the config folder
 CDIR=$BASEDIR"/"$CFG
 # applied DNS Servers via VPN
 DNSSRV="8.8.8.8"
+
+##############################################################################################
+##
+## Modify below that needs a propper understanding of the working mechanims of that script :)
+## Feel free to cleanup and enhance. I would be happy if you would send me your improvements back
+## Happy coding
+##
+##############################################################################################
 
 #
 # load functions
@@ -49,7 +63,7 @@ case $1 in
 	   echo ""
 	   echo "##############################################################"
 	   echo "##                                                          ##"
-	   echo "##    Initialize an interface onm th remote server          ##"
+	   echo "##    Initialize an interface on a remote server            ##"
 	   echo "##                                                          ##"
 	   echo "##############################################################"
 	   echo ""
@@ -77,15 +91,55 @@ case $1 in
 	    wgrestart
 	   echo " ... DONE ..."
        ;;
-    client)
+    addclient)
 	    echo ""
 		echo "##############################################################"
 		echo "##                                                          ##"
-		echo "##    Creating a client entry                               ##"
+		echo "##    Creating a client entry and adding to the json file   ##"
 		echo "##                                                          ##"
 		echo "##############################################################"
 		echo ""
 	   wgmakeclt
+	   echo " ... DONE ..."
+       ;;
+    setup)
+	    echo ""
+		echo "##############################################################"
+		echo "##                                                          ##"
+		echo "##    Create the initial environment                        ##"
+		echo "##                                                          ##"
+		echo "##############################################################"
+		echo ""
+	   
+	   	# create config folders
+	    if [ -d "$CDIR" ]; then
+          echo "Configuration directory cleared: $CDIR"
+	      rm -rf $CDIR/*
+        else
+	      echo "Configuration directory created: $CDIR"
+	      mkdir -p $CDIR
+        fi 
+	  
+	    # create config folders
+	    if [ -d "$CDIR" ]; then
+          echo "Backup directory cleared: $BASEDIR/$BCK"
+	      rm -rf $BASEDIR/$BCK/*
+        else
+	      echo "Configuration directory created: $BASEDIR/$BCK"
+	      mkdir -p $BASEDIR/$BCK
+        fi
+	  
+	    # create config folders
+	    if [ -d "$CDIR" ]; then
+          echo "Backup directory cleared: $BASEDIR/$BCK"
+	      rm -rf $BASEDIR/$BCK/*
+        else
+	      echo "Configuration directory created: $BASEDIR/$BCK"
+	      mkdir -p $BASEDIR/$BCK
+        fi
+	   
+	   
+	   
 	   echo " ... DONE ..."
        ;;
     *)
