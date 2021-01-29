@@ -56,8 +56,8 @@ function wggenerate {
 	  echo "[Interface]" >> $CFILE
       echo "PrivateKey = $ServerPrivateKey" >> $CFILE
       echo "Address = $Address" >> $CFILE
-	  echo $PostUp >> $CFILE
-      echo $PostDown >> $CFILE
+	  [[ $PostUp != "" ]] && echo $PostUp >> $CFILE
+      [[ $PostDoen != "" ]] && echo $PostDown >> $CFILE
 	  echo "ListenPort = $ListenPort" >> $CFILE
       echo "..."
 	  #
