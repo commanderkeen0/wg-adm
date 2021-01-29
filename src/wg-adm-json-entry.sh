@@ -14,7 +14,7 @@
 # "PostUp" : "NAT command when the wireguard interface comes up",
 # "PostDown" : "NAT command when the wireguard interface comes down",
 # "FQDN" : "FQDN / DYN DNS / IP - of the external interface, used to allow clients to connect",
-# "SSHKey" : "SSH Key name used for accessing remote machines, they have to be in the ./keys folder ending with .priv",
+# "SSHKey" : "SSH Key name used for accessing remote machines, they have to be in the $KEYS folder ending with .priv",
 # "AdminIP" : "Maanagment IP or FQDN for administrative access",
 # "SSHPort" : "SSH Port",
 # "SSHUser" : "access user"

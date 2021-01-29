@@ -33,17 +33,17 @@ function wgupdate {
 	  echo "##############################################################"
 	  echo "Server: $Servername"
 	  echo "excpected config file: $CDIR/$Servername/$ServerVirInt.conf"
-	  echo "excpected config file: $BASEDIR/keys/$SSHKey.priv"
-	  if [[ -f "$CDIR/$Servername/$ServerVirInt.conf" && -f "$BASEDIR/keys/$SSHKey.priv" ]]; then
+	  echo "excpected config file: $BASEDIR/$KEYS/$SSHKey.priv"
+	  if [[ -f "$CDIR/$Servername/$ServerVirInt.conf" && -f "$BASEDIR/$KEYS/$SSHKey.priv" ]]; then
 	     # create backup file of the 
 		 echo "Backup config file"
-		 ssh -i $BASEDIR/keys/$SSHKey.priv -p $SSHPort $SSHUser@$AdminIP "mv /etc/wireguard/$ServerVirInt.conf /etc/wireguard/$ServerVirInt.conf.bak"
+		 ssh -i $BASEDIR/$KEYS/$SSHKey.priv -p $SSHPort $SSHUser@$AdminIP "mv /etc/wireguard/$ServerVirInt.conf /etc/wireguard/$ServerVirInt.conf.bak"
 		 # copy config to server
 		 echo "transfer the new config file to the server"
-		 scp -i $BASEDIR/keys/$SSHKey.priv -P $SSHPort $CDIR/$Servername/$ServerVirInt.conf $SSHUser@$AdminIP:/etc/wireguard/
+		 scp -i $BASEDIR/$KEYS/$SSHKey.priv -P $SSHPort $CDIR/$Servername/$ServerVirInt.conf $SSHUser@$AdminIP:/etc/wireguard/
 		 # add the new deltas of the wireguard config
 		 echo "reconfigure wireguard without restart of the service"
-		 ssh -i $BASEDIR/keys/$SSHKey.priv -p $SSHPort $SSHUser@$AdminIP "wg addconf wg0 <(wg-quick strip wg0)"
+		 ssh -i $BASEDIR/$KEYS/$SSHKey.priv -p $SSHPort $SSHUser@$AdminIP "wg addconf wg0 <(wg-quick strip wg0)"
 		 echo "##############################################################"
 		 echo ""
       else
@@ -88,7 +88,7 @@ function wgrestart {
 	  echo "Server: $Servername"
 	     # create backup file of the 
 		 echo "Backup config file"
-		 ssh -i $CDIR/keys/$SSHKey.priv -p $SSHPort $SSHUser@$AdminIP "wg-quick down $ServerVirInt  && sleep 2 && wg-quick up $ServerVirInt"
+		 ssh -i $CDIR/$KEYS/$SSHKey.priv -p $SSHPort $SSHUser@$AdminIP "wg-quick down $ServerVirInt  && sleep 2 && wg-quick up $ServerVirInt"
 		 echo "##############################################################"
 		 echo ""
 	  S=$(( $S + 1 ))
