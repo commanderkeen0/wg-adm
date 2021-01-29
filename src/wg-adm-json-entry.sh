@@ -25,6 +25,13 @@ function wgmakeclt {
 #
 # read entry
 #
+# check for json file available
+  if [[ ! -f "$BASEDIR/$JFILE" ]]; 
+   then
+    echo "JSON File missing"
+    exit
+  fi
+
 
 # Read Endpoint Name
 x=0
@@ -78,11 +85,6 @@ echo "$NewClient"
 
 ###################################################################
 
-  if [[ ! -f "$BASEDIR/$JFILE" ]]; 
-   then
-    echo "File missing"
-    exit
-  fi
   JSON=$(cat $BASEDIR/$JFILE)
   S=0
   # check if the JSON file is OK

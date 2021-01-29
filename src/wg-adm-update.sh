@@ -7,7 +7,7 @@ function wgupdate {
   # get the JSON file into avariable
   if [[ ! -f "$BASEDIR/$JFILE" ]]; 
    then
-    echo "File missing"
+    echo "JSON File missing"
     exit
   fi
   JSON=$(cat $BASEDIR/$JFILE)
@@ -68,7 +68,7 @@ function wgrestart {
   # get the JSON file into avariable
   if [[ ! -f "$BASEDIR/$JFILE" ]]; 
    then
-    echo "File missing"
+    echo "JSON File missing"
     exit
   fi
   JSON=$(cat $BASEDIR/$JFILE)
