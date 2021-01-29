@@ -73,12 +73,20 @@
     "AllowedIPs": "0.0.0.0/0, ::/0"
   },
   {
-    "ClientName" : "ipad",
-    "User" : "ipad",
-    "TunnelIP" : "33",
-    "ClientPrivateKey" : "sOk07L9gBULH8mYe61Tlcm/Cw5OBcSjgSI0aniSHGH8=",
-    "PresharedKey" : "McqomOyMD09KK7ftXzhdnj001RSFrv0EmAWJxkWneYA=",
-    "AllowedIPs" : "0.0.0.0/0, ::/0"
+    "ClientName": "ipad",
+    "User": "ipad",
+    "TunnelIP": "33",
+    "ClientPrivateKey": "sOk07L9gBULH8mYe61Tlcm/Cw5OBcSjgSI0aniSHGH8=",
+    "PresharedKey": "McqomOyMD09KK7ftXzhdnj001RSFrv0EmAWJxkWneYA=",
+    "AllowedIPs": "0.0.0.0/0, ::/0"
+  },
+  {
+    "ClientName" : "pgriessler",
+    "User" : "pgriessler",
+    "TunnelIP" : "11",
+    "ClientPrivateKey" : "QOkH12RUywnIACQ3+4ScvqMcCSV5x4tgdY0c400TTXI=",
+    "PresharedKey" : "0w+InKETJfQu1AGluphUfWx0FX/1Khjg4tQjoe3REdw=",
+    "AllowedIPs" : "172.16.0.0/18"
   }
  ]
 }
