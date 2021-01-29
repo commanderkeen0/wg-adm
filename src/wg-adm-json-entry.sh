@@ -21,7 +21,6 @@
 
 
 function wgmakeclt {
-
 #
 # read entry
 #
@@ -57,7 +56,9 @@ read -p 'Destination network for teh VPN ,if empty 0.0.0.0/0 will be added: ' Al
 
 if [ "$AllowedIPs" == "" ]; 
  then 
-  echo "no entry"
+  echo ""
+  echo "Everything will be routed through the VPN Tunnel"
+  echo ""
   AllowedIPs="0.0.0.0/0, ::/0"
 fi
 
@@ -77,45 +78,55 @@ NewClient="
 	
 echo "$NewClient"
 
+
 ###################################################################
 
-  #JSON=$(cat $BASEDIR/$JFILE)
-  # check if the JSON file is OK
-  #CHK_JSON=$(echo $JSON | python3 -c "import sys,json;json.loads(sys.stdin.read());print('OK')")
-  S=0
 
-    JSONSRV=$(echo $JSON | jq '.Server' | head -n-1)
-	JSONCLT=$(echo $JSON | jq '.Client' | head -n-2)
-	NEWJSON="{
+S=0
+JSONSRV=$(echo $JSON | jq '.Server' | head -n-1)
+JSONCLT=$(echo $JSON | jq '.Client' | head -n-2)
+NEWJSON="{
  \"Server\":$JSONSRV
  ],
  \"Client\":$JSONCLT
   },$NewClient
  ]
-}
-  "
- 
-  read -p "Do you wish to update the JSON file? Yes/No :" yn
-  case $yn in
-      [Yy]*) 
-	  	# create config folders
-	    if [ -d "$BASEDIR/$BCK" ]; then
-          echo "Backup Directory ready: $BASEDIR/$BCK"
-	    else
-	      echo "Backup directory created: $BASEDIR/$BCK"
-	      mkdir -p $BASEDIR/$BCK
-        fi   
-		 
-		 mv $BASEDIR/$JFILE $BASEDIR/$BCK/$(date +%Y%m%d_%H%M%S)_$JFILE 
-         echo "$NEWJSON" > $BASEDIR/$JFILE
-		 echo "File updated"
-        ;;
-      *) 
-	    echo "no Update done"
-		exit
-	    ;;
-  esac
- 
+}"
 
+###################################################################
+read -p "Do you wish to update the JSON file? Yes/No :" yn
+case $yn in
+  [Yy]*) 
+	# check if backup folders exists
+	if [ -d "$BASEDIR/$BCK" ]; then
+     echo "Backup Directory ready: $BASEDIR/$BCK"
+	else
+	 echo "Backup directory created: $BASEDIR/$BCK"
+	 mkdir -p $BASEDIR/$BCK
+    fi   
+	# backup config
+	mv $BASEDIR/$JFILE $BASEDIR/$BCK/$(date +%Y%m%d_%H%M%S)_$JFILE 
+    echo "$NEWJSON" > $BASEDIR/$JFILE
+	echo "File updated: $BASEDIR/$JFILE"
+    echo ""
 	
+	read -p "Do you want to generate the configuration files? Yes/No :" yn1
+	case $yn1 in
+	  [Yy]*)
+       
+	   wggenerate
+	   
+	   ;;
+	  *)
+	    echo ""
+		echo "No configuration files generated."
+		echo " run ./wg-adm.sh generate manually later"
+		echo ""
+    esac	
+	;;
+  *) 
+    echo "no Update done"
+	exit
+	;;
+  esac
 }

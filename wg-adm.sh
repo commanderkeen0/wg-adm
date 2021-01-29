@@ -43,9 +43,10 @@ DNSSRV="8.8.8.8"
 . $BASEDIR/src/./wg-adm-update.sh
 . $BASEDIR/src/./wg-adm-json-entry.sh
 
+##############################################################################################
 
 #
-# generall functions
+# generell functions
 #
 
 function check_json {
@@ -71,6 +72,8 @@ function check_json {
 	fi
   fi
 }
+
+##############################################################################################
 
 #
 # Main Program
