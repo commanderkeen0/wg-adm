@@ -54,7 +54,7 @@ function wgupdate {
    else
    	echo "JSON input file has errors"
   fi
-echo " ... DONE ..."
+echo ""
 }
 
 # restart wg service on the remote servers
@@ -96,5 +96,4 @@ function wgrestart {
    else
    	echo "JSON input file has errors"
   fi
-echo " ... DONE ..."
-}
+echo ""

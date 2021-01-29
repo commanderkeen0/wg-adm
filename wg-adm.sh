@@ -121,7 +121,7 @@ case $1 in
         fi 
 	  
 	    # create config folders
-	    if [ -d "$CDIR" ]; then
+	    if [ -d "$BASEDIR/$BCK" ]; then
           echo "Backup directory cleared: $BASEDIR/$BCK"
 	      rm -rf $BASEDIR/$BCK/*
         else
@@ -130,12 +130,12 @@ case $1 in
         fi
 	  
 	    # create config folders
-	    if [ -d "$CDIR" ]; then
+	    if [ -d "$BASEDIR/$KEYS" ]; then
           echo "Backup directory cleared: $BASEDIR/$BCK"
-	      rm -rf $BASEDIR/$BCK/*
+	      rm -rf $BASEDIR/$KEYS/*
         else
 	      echo "Configuration directory created: $BASEDIR/$BCK"
-	      mkdir -p $BASEDIR/$BCK
+	      mkdir -p $BASEDIR/$KEYS
         fi
 	   
 	   

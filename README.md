@@ -6,6 +6,10 @@ manually.
 
 Currently tested distriubutions are: Debian / Ubuntu
 
+If you want to have just a static setup without adding clients on a regular basis check the following project
+
+[wireguardconfig.com](https://www.wireguardconfig.com/)
+
 # Requirements
 What is needed to make it work:
 
