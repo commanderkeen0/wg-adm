@@ -50,7 +50,6 @@ while [ $x -le 1 ]
 do
  read -p 'Client IP (last octet) : '  TunnelIP
  [[ $TunnelIP =~ ^[0-9]{1,3}$ ]] && [[ $TunnelIP -le 254 && $TunnelIP -gt 1  ]] && x=2 || echo "No Number between: 2-254"
- #  [[ "$UserName" =~ [^a-zA-Z0-9.@] ]] && x=0 || x=2
 done
 
 # add the destination netwrok 
@@ -69,7 +68,7 @@ PresharedKey=$(wg genpsk)
 NewClient="
   {
     \"ClientName\" : \"$ClientName\",
-    \"User\" : \"$ClientName\",
+    \"User\" : \"$UserName\",
     \"TunnelIP\" : \"$TunnelIP\",
     \"ClientPrivateKey\" : \"$ClientPrivateKey\",
     \"PresharedKey\" : \"$PresharedKey\",
