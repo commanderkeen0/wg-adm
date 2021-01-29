@@ -85,12 +85,11 @@ function wgrestart {
 	  # take wireguard interface down and bring it back up
 	  #
 	  echo "##############################################################"
-	  echo "Server: $Servername"
-	     # create backup file of the 
-		 echo "Backup config file"
-		 ssh -i $CDIR/$KEYS/$SSHKey.priv -p $SSHPort $SSHUser@$AdminIP "wg-quick down $ServerVirInt  && sleep 2 && wg-quick up $ServerVirInt"
-		 echo "##############################################################"
-		 echo ""
+	  echo ""
+	  echo "Restart the virtual interface on: $Servername"
+	  ssh -i $CDIR/$KEYS/$SSHKey.priv -p $SSHPort $SSHUser@$AdminIP "wg-quick down $ServerVirInt  && sleep 2 && wg-quick up $ServerVirInt"
+	  echo "##############################################################"
+	  echo ""
 	  S=$(( $S + 1 ))
 	 done
 echo ""

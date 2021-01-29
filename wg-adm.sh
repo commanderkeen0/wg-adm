@@ -54,7 +54,7 @@ function check_json {
   if [[ ! -f "$BASEDIR/$JFILE" ]]; 
    then
     echo "$BASEDIR/$JFILE - File is missing !"
-    exit
+    exit 0
   else
     JSON=$(cat $BASEDIR/$JFILE)
     # check if the JSON file is OK
@@ -69,7 +69,7 @@ function check_json {
 	 echo "JSON File syntax not okay"
 	 echo ""
 	 echo ""
-	 exit
+	 exit 0
 	fi
   fi
 }
