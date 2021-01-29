@@ -10,7 +10,7 @@
 # Variables
 #
 # JSON input file
-JFILE="wg.json"
+JFILE="wg0.json"
 # Basedir where the script resides
 BASEDIR=$(pwd)
 # Configuration Folder
@@ -54,7 +54,6 @@ case $1 in
 	   echo "##############################################################"
 	   echo ""
 	   echo "UNDER DEVELOPMENT"
-
        ;;
     update)
 	    echo ""

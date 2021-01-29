@@ -35,16 +35,21 @@ wg-adm.sh is the main script that will call different functions from other suppo
 are hosted in ./src/ folder:
 
 ```json
+BCK
 CFG
 keys
 src
-	wg-adm-generate.sh
-	wg-adm-update.sh
+    wg-adm-generate.sh
+    wg-adm-init.sh
+    wg-adm-json-entry.sh
+    wg-adm-update.sh
 README.md
 wg-adm.sh
-wg.json
+wg0.json
+
 ```
 
+* BCK - Backupfolder for the json creation script
 * CFG - is the Folder that will hold the configuration files of teh servers and clients
 * keys - holding the SSH keys to access the remote VPN servers
 * src - holding the aditional function files
@@ -186,6 +191,7 @@ Putting down the wierguard interface and putting it back up on the remote server
 * PSK needed for client configuration
 * config fils are not check if they contain updates, they are transfered and update is executed
 * no checking of client names / server names - only no space names are supported
+* no round robin in the backup folder
 
 ## Solved
 * Client config creation tool added
