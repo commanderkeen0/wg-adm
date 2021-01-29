@@ -107,3 +107,4 @@ function wgrestart {
    	echo "JSON input file has errors"
   fi
 echo ""
+}
