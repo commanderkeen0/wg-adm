@@ -97,7 +97,7 @@ function wggenerate {
         echo "Creating CLIENT configuration file: "$CLTFILE
 
 		echo "# wg-admin generated configuration file" > $CLTFILE
-		echo "# Client configurationfile for: $User" >> $CLTFILE
+		echo "# Client configuration file for: $User" >> $CLTFILE
 		echo "[Interface]" >> $CLTFILE
 		echo "Address = "$(echo $Address | awk -F "." '{ print $1"."$2"."$3}')".$TunnelIP/32" >> $CLTFILE
 		echo "PrivateKey = $ClientPrivateKey" >> $CLTFILE

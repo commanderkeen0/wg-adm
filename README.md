@@ -49,7 +49,7 @@ src
     wg-adm-update.sh
 README.md
 wg-adm.sh
-wg0.json
+wg0_sample.json
 
 ```
 
@@ -59,7 +59,7 @@ wg0.json
 * src - holding the aditional function files
 * README.md - this file
 * wg-adm.sh - main script
-* wg0.jason - default data input file (can be modified)
+* wg0_sample.json - template file
 
 ## JSON File
 The structure of the JSON file is needed as following:
@@ -202,6 +202,7 @@ The different SSH keys must terminated with ".priv" and be stored in the $KEYS f
 
 It is addvised to use different keys for each server you have. 
  
+If no file is found a warning is displayed and the users default key will be utilised.
 
 ## setup wireguard initially on your server
 
