@@ -37,7 +37,7 @@ function wgupdate {
 	  echo "excpected config file: $BASEDIR/$KEYS/$SSHKey.priv"
 	  if [[ -f "$CDIR/$Servername/$ServerVirInt.conf" && -f "$BASEDIR/$KEYS/$SSHKey.priv" ]]; then
 	     # create backup folder
-		 ssh -i $BASEDIR/$KEYS/$SSHKey.priv -p $SSHPort $SSHUser@$AdminIP '[[ ! -d "/etc/wireguard/BCK" ]] && mkdir /etc/wireguard/BCK'
+		 ssh -i $BASEDIR/$KEYS/$SSHKey.priv -p $SSHPort $SSHUser@$AdminIP '[[ ! -d "/etc/wireguard/BCK" ]] && mkdir /etc/wireguard/BCK && chmod 0700 /etc/wireguard/BCK'
 		 		 
 		 echo "Backup config file"
 		 ssh -i $BASEDIR/$KEYS/$SSHKey.priv -p $SSHPort $SSHUser@$AdminIP "mv /etc/wireguard/$ServerVirInt.conf /etc/wireguard/BCK/$(date +%Y%m%d_%H%M%S)_$ServerVirInt.conf.bak"
@@ -45,6 +45,7 @@ function wgupdate {
 		 # copy config to server
 		 echo "transfer the new config file to the server"
 		 scp -i $BASEDIR/$KEYS/$SSHKey.priv -P $SSHPort $CDIR/$Servername/$ServerVirInt.conf $SSHUser@$AdminIP:/etc/wireguard/
+		 ssh -i $BASEDIR/$KEYS/$SSHKey.priv -p $SSHPort $SSHUser@$AdminIP "chmod 0600 /etc/wireguard/$ServerVirInt.conf"
 		 # add the new deltas of the wireguard config
 		 echo "reconfigure wireguard without restart of the service"
 		 ssh -i $BASEDIR/$KEYS/$SSHKey.priv -p $SSHPort $SSHUser@$AdminIP "wg addconf wg0 <(wg-quick strip wg0)"
