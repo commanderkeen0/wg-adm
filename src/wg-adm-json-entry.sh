@@ -80,7 +80,7 @@ do
 done
 
 # add the destination netwrok 
-read -p 'Destination network for teh VPN ,if empty 0.0.0.0/0 will be added: ' AllowedIPs
+read -p 'VPN destination network,if let empty 0.0.0.0/0 will be added: ' AllowedIPs
 
 if [ "$AllowedIPs" == "" ]; 
  then 
