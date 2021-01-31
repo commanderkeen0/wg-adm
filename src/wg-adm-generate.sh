@@ -102,7 +102,7 @@ function wggenerate {
 		echo "[Interface]" >> $CLTFILE
 		echo "Address = "$(echo $Address | awk -F "." '{ print $1"."$2"."$3}')".$TunnelIP/32" >> $CLTFILE
 		echo "PrivateKey = $ClientPrivateKey" >> $CLTFILE
-		[[ $DNSSRV != "" ]] && echo "DNS = $DNSSRV" >> $CLTFILE || echo "no DNS configured"
+		[[ "$DNSSRV" != "" ]] && echo "DNS = $DNSSRV" >> $CLTFILE || echo "no DNS configured"
 		echo ""  >> $CLTFILE
 		echo "[Peer]" >> $CLTFILE
 		echo "PublicKey = $ServerPublicKey" >> $CLTFILE
