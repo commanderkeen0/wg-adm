@@ -119,4 +119,17 @@ function wggenerate {
 	 done
 
 echo "##############################################################"
+	
+read -p "Do you want to update the configuration files on the VPN servers? Yes/No :" yn2
+case $yn2 in
+  [Yy]*)
+    wgupdate
+   ;;
+  *)
+    echo ""
+	echo "No configuration file update done."
+	echo " run ./wg-adm.sh update manually later"
+	echo ""
+esac
+
 }
