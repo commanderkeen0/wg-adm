@@ -36,9 +36,12 @@ function wgupdate {
 	  echo "excpected config file: $CDIR/$Servername/$ServerVirInt.conf"
 	  echo "excpected config file: $BASEDIR/$KEYS/$SSHKey.priv"
 	  if [[ -f "$CDIR/$Servername/$ServerVirInt.conf" && -f "$BASEDIR/$KEYS/$SSHKey.priv" ]]; then
-	     # create backup file of the 
+	     # create backup folder
+		 ssh -i $BASEDIR/$KEYS/$SSHKey.priv -p $SSHPort $SSHUser@$AdminIP '[[ ! -d "/etc/wireguard/BCK" ]] && ssh -i $BASEDIR/$KEYS/$SSHKey.priv -p $SSHPort $SSHUser@$AdminIP "mkdir /etc/wireguard/BCK"'
+		 		 
 		 echo "Backup config file"
-		 ssh -i $BASEDIR/$KEYS/$SSHKey.priv -p $SSHPort $SSHUser@$AdminIP "mv /etc/wireguard/$ServerVirInt.conf /etc/wireguard/$ServerVirInt.conf.bak"
+		 ssh -i $BASEDIR/$KEYS/$SSHKey.priv -p $SSHPort $SSHUser@$AdminIP "mv /etc/wireguard/$ServerVirInt.conf /etc/wireguard/BCK/$(date +%Y%m%d_%H%M%S)_$ServerVirInt.conf.bak"
+		 		 
 		 # copy config to server
 		 echo "transfer the new config file to the server"
 		 scp -i $BASEDIR/$KEYS/$SSHKey.priv -P $SSHPort $CDIR/$Servername/$ServerVirInt.conf $SSHUser@$AdminIP:/etc/wireguard/

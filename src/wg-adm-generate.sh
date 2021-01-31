@@ -41,6 +41,7 @@ function wggenerate {
 	  ServerPublicKey=$(echo $ServerPrivateKey | wg pubkey)
 	  PostUp=$(echo $JSON | jq '.Server['$S'].PostUp' | sed -s "s/\"//g" | sed -s "s/INT/$ServerPhyInt/g")
 	  PostDown=$(echo $JSON | jq '.Server['$S'].PostDown' | sed -s "s/\"//g" | sed -s "s/INT/$ServerPhyInt/g")
+	  DNSSRV=$(echo $JSON | jq '.Server['$S'].DNSSRV' |sed -s "s/\"//g")
 	  FQDN=$(echo $JSON | jq '.Server['$S'].FQDN' |sed -s "s/\"//g")
 	  
 	  echo "##############################################################"
@@ -57,7 +58,7 @@ function wggenerate {
       echo "PrivateKey = $ServerPrivateKey" >> $CFILE
       echo "Address = $Address" >> $CFILE
 	  [[ $PostUp != "" ]] && echo $PostUp >> $CFILE
-      [[ $PostDoen != "" ]] && echo $PostDown >> $CFILE
+      [[ $PostDown != "" ]] && echo $PostDown >> $CFILE
 	  echo "ListenPort = $ListenPort" >> $CFILE
       echo "..."
 	  #
@@ -101,7 +102,7 @@ function wggenerate {
 		echo "[Interface]" >> $CLTFILE
 		echo "Address = "$(echo $Address | awk -F "." '{ print $1"."$2"."$3}')".$TunnelIP/32" >> $CLTFILE
 		echo "PrivateKey = $ClientPrivateKey" >> $CLTFILE
-		echo "DNS = $DNSSRV" >> $CLTFILE
+		[[ $DNSSRV != "" ]] && echo "DNS = $DNSSRV" >> $CLTFILE
 		echo ""  >> $CLTFILE
 		echo "[Peer]" >> $CLTFILE
 		echo "PublicKey = $ServerPublicKey" >> $CLTFILE

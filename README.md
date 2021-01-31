@@ -1,6 +1,11 @@
  # Wireguard CLI management tool
 This tool a collection of different bash scripts to create configuration files for 
 wireguard servers and clients. 
+
+The tool provides the capability to have the same clients beeing able to conenct from different dial-in servers. 
+That means it provides the capability to manage multiple server with similar configuration. 
+
+
 All configuration items are stored within a json file that currently needs to be managed
 manually.
 
@@ -76,6 +81,7 @@ The structure of the JSON file is needed as following:
      "ServerPrivateKey" : "KIl1BGc+cWXXFVnj5waufVzKWJ3Q123u5niI/TzV6lg=",
 	 "PostUp" : "PostUp = iptables -A FORWARD -i %i -j ACCEPT; iptables -t nat -A POSTROUTING -o INT -j MASQUERADE",
      "PostDown" : "PostDown = iptables -D FORWARD -i %i -j ACCEPT; iptables -t nat -D POSTROUTING -o INT -j MASQUERADE",
+	 "DNSSRV" : "8.8.8.8",
 	 "FQDN" : "172.23.20.179",
 	 "SSHKey" : "wgs1",
 	 "AdminIP" : "172.23.20.180",
@@ -91,6 +97,7 @@ The structure of the JSON file is needed as following:
      "ServerPrivateKey" : "GEjYMlkcGK6LsUBq3w6HDqtHzmDYiiUNP0tWB7LdqlM=",
 	 "PostUp" : "PostUp = iptables -A FORWARD -i %i -j ACCEPT; iptables -t nat -A POSTROUTING -o INT -j MASQUERADE",
      "PostDown" : "PostDown = iptables -D FORWARD -i %i -j ACCEPT; iptables -t nat -D POSTROUTING -o INT -j MASQUERADE",
+	 "DNSSRV" : "8.8.8.8",
 	 "FQDN" : "172.23.20.180",
 	 "SSHKey" : "wgs2",
 	 "AdminIP" : "172.23.20.179",
@@ -138,6 +145,7 @@ The structure of the JSON file is needed as following:
 * "ServerPrivateKey" : "Serer private key",
 * "PostUp" : "NAT command when the wireguard interface comes up",
 * "PostDown" : "NAT command when the wireguard interface comes down",
+* "DNSSRV" : "Assigned DNS Server for VPN resolution, if empty none is applied",
 * "FQDN" : "FQDN / DYN DNS / IP - of the external interface, used to allow clients to connect",
 * "SSHKey" : "SSH Key name used for accessing remote machines, they have to be in the $KEYS folder ending with .priv",
 * "AdminIP" : "Maanagment IP or FQDN for administrative access",
@@ -181,8 +189,6 @@ BCK="BCK"
 KEYS="keys"
 * Full Path to the config folder
 CDIR=$BASEDIR"/"$CFG
-* applied DNS Servers via VPN
-DNSSRV="8.8.8.8"
 
 
 ## prepare the environment 

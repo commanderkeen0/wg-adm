@@ -26,7 +26,7 @@ KEYS="keys"
 # Full Path to the config folder
 CDIR=$BASEDIR"/"$CFG
 # applied DNS Servers via VPN
-DNSSRV="8.8.8.8"
+#DNSSRV="8.8.8.8"
 
 ##############################################################################################
 ##
