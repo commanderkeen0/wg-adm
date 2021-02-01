@@ -72,7 +72,7 @@ function wgrestart {
   check_json
   S=0
 	
-	# star getting data of teh server
+	# start getting data of the servers
 	SRV=$(echo $JSON | jq '.Server' | jq length)
 	SRV=$(( $SRV - 1 ))
 	while [ $S -le $SRV ]
@@ -84,14 +84,14 @@ function wgrestart {
 	  SSHPort=$(echo $JSON | jq '.Server['$S'].SSHPort' | sed -s "s/\"//g")
 	  ServerVirInt=$(echo $JSON | jq '.Server['$S'].ServerVirInt' | sed -s "s/\"//g")
 	  FQDN=$(echo $JSON | jq '.Server['$S'].FQDN' |sed -s "s/\"//g")
-      AdminIP=$(echo $JSON | jq '.Server['$S'].AdminIP' |sed -s "s/\"//g")
+          AdminIP=$(echo $JSON | jq '.Server['$S'].AdminIP' |sed -s "s/\"//g")
       #
 	  # take wireguard interface down and bring it back up
 	  #
 	  echo "##############################################################"
 	  echo ""
 	  echo "Restart the virtual interface on: $Servername"
-	  ssh -i $CDIR/$KEYS/$SSHKey.priv -p $SSHPort $SSHUser@$AdminIP "wg-quick down $ServerVirInt  && sleep 2 && wg-quick up $ServerVirInt"
+	  ssh -i $BASEDIR/$KEYS/$SSHKey.priv -p $SSHPort $SSHUser@$AdminIP "wg-quick down $ServerVirInt  && sleep 2 && wg-quick up $ServerVirInt"
 	  echo "##############################################################"
 	  echo ""
 	  S=$(( $S + 1 ))
