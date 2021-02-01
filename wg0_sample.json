@@ -9,7 +9,7 @@
     "ServerPrivateKey": "KIl1BGc+cWXXFVnj5waufVzKWJ3Q123u5niI/TzV6lg=",
     "PostUp": "PostUp = iptables -A FORWARD -i %i -j ACCEPT; iptables -t nat -A POSTROUTING -o INT -j MASQUERADE",
     "PostDown": "PostDown = iptables -D FORWARD -i %i -j ACCEPT; iptables -t nat -D POSTROUTING -o INT -j MASQUERADE",
-	"DNSSRV" : "8.8.8.8",
+    "DNSSRV" : "8.8.8.8",
     "FQDN": "172.23.20.179",
     "SSHKey": "wgs1",
     "AdminIP": "172.23.20.180",
@@ -25,7 +25,7 @@
     "ServerPrivateKey": "GEjYMlkcGK6LsUBq3w6HDqtHzmDYiiUNP0tWB7LdqlM=",
     "PostUp": "PostUp = iptables -A FORWARD -i %i -j ACCEPT; iptables -t nat -A POSTROUTING -o INT -j MASQUERADE",
     "PostDown": "PostDown = iptables -D FORWARD -i %i -j ACCEPT; iptables -t nat -D POSTROUTING -o INT -j MASQUERADE",
-	"DNSSRV" : "8.8.8.8",
+    "DNSSRV" : "8.8.8.8",
     "FQDN": "172.23.20.180",
     "SSHKey": "wgs2",
     "AdminIP": "172.23.20.179",
@@ -60,4 +60,3 @@
   }
  ]
 }
-  
