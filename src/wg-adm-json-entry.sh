@@ -32,28 +32,8 @@ echo ""
 # read entry
 #
 # check for json file available
-check_json
 
-## get existing cleints and IP
-
- echo "Listing of existing Clients"
- echo "Last Octest - Client Name - Username"
-
- C=0
- CLT=$(echo $JSON | jq '.Client' | jq length)
- CLT=$(( $CLT - 1 ))
- while [ $C -le $CLT ]
-  do
-    ClientName=$(echo $JSON | jq '.Client['$C'].ClientName' | sed -s "s/\"//g")
-    User=$(echo $JSON | jq '.Client['$C'].User' | sed -s "s/\"//g")
-    TunnelIP=$(echo $JSON | jq '.Client['$C'].TunnelIP' | sed -s "s/\"//g")  
-
-    EXISTINGCLT+="$TunnelIP - $ClientName - $User
-"
-	C=$(( $C + 1 )) 
- done
-
-echo "$EXISTINGCLT"
+wglistclients
 
 # Read Endpoint Name
 x=0
@@ -157,4 +137,32 @@ case $yn in
 	exit
 	;;
   esac
+}
+
+function wglistclients {
+
+check_json
+# get existing cleints and IP
+
+ echo "Listing of existing Clients"
+ echo "Last Octest - Client Name - Username"
+
+ C=0
+ CLT=$(echo $JSON | jq '.Client' | jq length)
+ CLT=$(( $CLT - 1 ))
+ while [ $C -le $CLT ]
+  do
+    ClientName=$(echo $JSON | jq '.Client['$C'].ClientName' | sed -s "s/\"//g")
+    User=$(echo $JSON | jq '.Client['$C'].User' | sed -s "s/\"//g")
+    TunnelIP=$(echo $JSON | jq '.Client['$C'].TunnelIP' | sed -s "s/\"//g")  
+
+    EXISTINGCLT+="$TunnelIP - $ClientName - $User
+"
+	C=$(( $C + 1 )) 
+ done
+
+echo "$EXISTINGCLT"
+
+
+
 }

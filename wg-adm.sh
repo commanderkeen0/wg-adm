@@ -101,10 +101,18 @@ case $1 in
        wgaddclient
        echo " ... DONE ..."
        ;;
-    setup)
+    listclients)
+       wglistclients
+       echo " ... DONE ..."
+       ;;
+    
+	setup)
        wgadmsetup    
        echo " ... DONE ..."
        ;;
+
+
+
     *)
 echo "
 
