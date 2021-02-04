@@ -246,11 +246,17 @@ wg-adm.sh restart
 ```
 Putting down the wierguard interface and putting it back up on the remote servers.
 
-## transfer config files to the wireguard server
+## add an additional client to the configuration file
 ```bash
 wg-adm.sh addclient
 ```
 Add additional client to the json file.
+
+## list all configured clients
+```bash
+wg-adm.sh listclients
+```
+list all clients including the assigned 4th octet
 
 ## add additional clients to the json file
 ```bash
