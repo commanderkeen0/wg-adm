@@ -87,7 +87,7 @@ case $1 in
        ;;
     init)
        wginit
-	   echo " ... DONE ..."
+       echo " ... DONE ..."
        ;;
     update)
         wgupdate
@@ -105,14 +105,15 @@ case $1 in
        wglistclients
        echo " ... DONE ..."
        ;;
-    
-	setup)
-       wgadmsetup    
+    genconfig)
+       wggenjson
        echo " ... DONE ..."
        ;;
-
-
-
+    setup)
+       wgadmsetup
+       wggenjson
+       echo " ... DONE ..."
+       ;;
     *)
 echo "
 

@@ -34,6 +34,8 @@ echo ""
 # check for json file available
 
 wglistclients
+echo "$EXISTINGCLT"
+
 
 # Read Endpoint Name
 x=0
@@ -52,10 +54,12 @@ do
 done
 
 # Read last octet
+
+TIP=$(( $TunnelIP + 1 ))
 x=0
 while [ $x -le 1 ]
 do
- read -p 'Client IP (last octet) : '  TunnelIP
+ read -p "Client IP (last octet - suggestion: $TIP) : "  TunnelIP
  [[ $TunnelIP =~ ^[0-9]{1,3}$ ]] && [[ $TunnelIP -le 254 && $TunnelIP -gt 1  ]] && x=2 || echo "No Number between: 2-254"
 done
 
@@ -67,8 +71,16 @@ if [ "$AllowedIPs" == "" ];
   echo ""
   echo "Everything will be routed through the VPN Tunnel"
   echo ""
-  AllowedIPs="0.0.0.0/0, ::/0"
-fi
+  read -p 'Do you want to exclude the RFC 1918 networks Yes/No:' RFC1918
+  case $RFC1918 in
+    [Yy]*)
+       AllowedIPs="0.0.0.0/5, 8.0.0.0/7, 11.0.0.0/8, 12.0.0.0/6, 16.0.0.0/4, 32.0.0.0/3, 64.0.0.0/2, 128.0.0.0/3, 160.0.0.0/5, 168.0.0.0/6, 172.0.0.0/12, 172.32.0.0/11, 172.64.0.0/10, 172.128.0.0/9, 173.0.0.0/8, 174.0.0.0/7, 176.0.0.0/4, 192.0.0.0/9, 192.128.0.0/11, 192.160.0.0/13, 192.169.0.0/16, 192.170.0.0/15, 192.172.0.0/14, 192.176.0.0/12, 192.192.0.0/10, 193.0.0.0/8, 194.0.0.0/7, 196.0.0.0/6, 200.0.0.0/5, 208.0.0.0/4, 8.8.8.8/32"
+	   ;;
+	*)
+       AllowedIPs="0.0.0.0/0, ::/0"
+	   ;;  
+  esac  
+ fi
 
 # generate Keys
 ClientPrivateKey=$(wg genkey)
@@ -161,8 +173,7 @@ check_json
 	C=$(( $C + 1 )) 
  done
 
-echo "$EXISTINGCLT"
+#echo "$EXISTINGCLT"
 
-
-
+#return $TunnelIP $EXISTINGCLT
 }

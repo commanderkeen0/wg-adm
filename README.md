@@ -15,6 +15,9 @@ If you want to have just a static setup without adding clients on a regular basi
 
 [wireguardconfig.com](https://www.wireguardconfig.com/)
 
+
+!!! THE USAGE IS AT YOUR OWN RISK !! ENSURE THAT YOU HAVE CHANGED ALL KEYS IN ADVANCE!!!!
+
 # Requirements
 What is needed to make it work:
 
