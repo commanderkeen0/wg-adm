@@ -103,9 +103,10 @@ case $1 in
        ;;
     listclients)
        wglistclients
+	   echo "$EXISTINGCLT"
        echo " ... DONE ..."
        ;;
-    genconfig)
+    sample)
        wggenjson
        echo " ... DONE ..."
        ;;
@@ -124,11 +125,11 @@ The folloing commands are valid:
 Server management
   ./wg-adm.sh generate - generate your config files
   ./wg-adm.sh update - add additional client to your server
-  ./wg-adm.sh restart - bring your virtual interface down and up on your servers
-Client management
-  ./wg-adm.sh addclient - add aditional clients to the existing json file
-Tool
-  ./wg-adm.sh setup - check your environment and create needed folders"
+  ./wg-adm.sh restart - bring your virtual interface down and up on your servers Client management
+  ./wg-adm.sh addclient - add aditional clients to the existing json file Tool
+  ./wg-adm.sh listclient - shows all clients configured in the config file
+  ./wg-adm.sh setup - check your environment and prepare if necessary
+  ./wg-adm.sh sample - "
      ;;
 esac
 
