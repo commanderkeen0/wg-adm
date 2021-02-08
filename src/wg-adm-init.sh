@@ -184,6 +184,9 @@ JCONFIG+="
 "
 
  echo "$JCONFIG"
- echo "$JCONFIG" >> $NFILENAME.json
+ 
+ 
+ 
+ [[ ! -f $NFILENAME.json ]] &&  echo "$JCONFIG" >> $NFILENAME.json || echo "File Exists - nothing written"
 
 }
