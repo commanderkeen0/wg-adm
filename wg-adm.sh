@@ -129,7 +129,7 @@ Server management
   ./wg-adm.sh addclient - add aditional clients to the existing json file Tool
   ./wg-adm.sh listclient - shows all clients configured in the config file
   ./wg-adm.sh setup - check your environment and prepare if necessary
-  ./wg-adm.sh sample - "
+  ./wg-adm.sh sample - create sample interfacefile"./
      ;;
 esac
 

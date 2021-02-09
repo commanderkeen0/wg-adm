@@ -15,15 +15,17 @@ function wginit {
 }
 
 function wgadmsetup {
-echo ""
-        echo "##############################################################"
-        echo "##                                                          ##"
-        echo "##    Create the initial environment                        ##"
-        echo "##                                                          ##"
-        echo "##############################################################"
-        echo ""
-       
-           # create config folders
+echo "
+##############################################################
+##                                                          ##
+##    Create the initial environment                        ##
+##                                                          ##
+##############################################################
+"
+        
+		chmod 0700 .
+	   	   
+        # create config folders
         if [ -d "$CDIR" ]; then
           echo "Configuration directory cleared: $CDIR"
           rm -rf $CDIR/*
@@ -31,7 +33,8 @@ echo ""
           echo "Configuration directory created: $CDIR"
           mkdir -p $CDIR
         fi 
-      
+        chmod 0700 $CDIR
+	  
         # create config folders
         if [ -d "$BASEDIR/$BCK" ]; then
           echo "Backup directory cleared: $BASEDIR/$BCK"
@@ -40,6 +43,7 @@ echo ""
           echo "Configuration directory created: $BASEDIR/$BCK"
           mkdir -p $BASEDIR/$BCK
         fi
+		chmod 0700 $BASEDIR/$BCK
       
         # create config folders
         if [ -d "$BASEDIR/$KEYS" ]; then
@@ -49,7 +53,8 @@ echo ""
           echo "Configuration directory created: $BASEDIR/$KEYS"
           mkdir -p $BASEDIR/$KEYS
         fi
-       
+        chmod 0700 $BASEDIR/$KEYS
+	   
        # check wireguard
        if [[ -f "$(which wg)" ]]; 
         then
@@ -112,7 +117,7 @@ JCONFIG+="
    {    
     \"Servername\": \"srv$S\",
     \"ServerPhyInt\": \"enp0s3\",
-    \"ServerVirInt\": \"wg0\",
+    \"ServerVirInt\": \"$NFILENAME\",
     \"Address\": \"10.112.$S.1/24\",
     \"ListenPort\": \"51820\",
     \"ServerPrivateKey\": \"$SPRIVKEY\",
@@ -160,7 +165,7 @@ JCONFIG+="
  JCONFIG+="
     {
     \"ClientName\": \"clt$S\",
-    \"User\": \"clt3@mydomain.corp\",
+    \"User\": \"clt$S@mydomain.corp\",
     \"TunnelIP\": \"$IP\",
     \"ClientPrivateKey\": \"$PRIVKEY\",
     \"PresharedKey\": \"$PSK\",
