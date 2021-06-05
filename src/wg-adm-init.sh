@@ -128,11 +128,12 @@ JCONFIG+="
     \"SSHKey\": \"srv$S\",
     \"AdminIP\": \"srv$S\",
     \"SSHPort\": \"22\",
-    \"SSHUser\": \"root\"
+    \"SSHUser\": \"root\",
+    \"Persist\" : \"1\"
 "
 NSRVK=$(( $NSRV -1 ))
-if [ $S -le $NSRVK ] 
- then 
+if [ $S -le $NSRVK ]
+ then
   JCONFIG+="   },"
  else
  JCONFIG+="   }"
@@ -145,8 +146,8 @@ JCONFIG+="
  ],
  \"Client\":["
 
-# ###########################################
- 
+############################################
+
  S=1
  while [ $S -le $NCLT ]
   do
@@ -159,8 +160,8 @@ JCONFIG+="
 	   ;;
 	*)
        AllowedIPs="0.0.0.0/0, ::/0"
-	   ;;  
-  esac 
+	   ;;
+  esac
  IP=$(( $S + 10 ))
  JCONFIG+="
     {
@@ -173,8 +174,8 @@ JCONFIG+="
 "
 
  NCLTK=$(( $NCLT -1 ))
- if [ $S -le $NCLTK ] 
-  then 
+ if [ $S -le $NCLTK ]
+  then
    JCONFIG+="   },"
   else
   JCONFIG+="   }"

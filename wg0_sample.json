@@ -14,7 +14,8 @@
     "SSHKey": "wgs1",
     "AdminIP": "172.23.20.180",
     "SSHPort": "22",
-    "SSHUser": "root"
+    "SSHUser": "root",
+    "Persist" : "1"
   },
   {
     "Servername": "wgs2",

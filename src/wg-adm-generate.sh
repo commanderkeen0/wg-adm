@@ -43,7 +43,8 @@ function wggenerate {
 	  PostDown=$(echo $JSON | jq '.Server['$S'].PostDown' | sed -s "s/\"//g" | sed -s "s/INT/$ServerPhyInt/g")
 	  DNSSRV=$(echo $JSON | jq '.Server['$S'].DNSSRV' |sed -s "s/\"//g")
 	  FQDN=$(echo $JSON | jq '.Server['$S'].FQDN' |sed -s "s/\"//g")
-	  
+	  PERSIST=$(echo $JSON | jq '.Server['$S'].Persist' |sed -s "s/\"//g")
+
 	  echo "##############################################################"
 	  echo "Start generating Configs for:" $Servername
 	  mkdir -p $CDIR/$Servername
@@ -81,7 +82,7 @@ function wggenerate {
 		NetworksOverVPN=$(echo $JSON | jq '.Client['$C'].AllowedIPs' | sed -s "s/\"//g")
 		#
 		# all client specific configurtion items will be places in the server configuration
-		#		
+		#
 		echo "Creating entry for Client: "$ClientName
 		echo "" >> $CFILE
 		echo "[Peer]" >> $CFILE
@@ -109,11 +110,12 @@ function wggenerate {
 		echo "PresharedKey = $PresharedKey" >> $CLTFILE
 		echo "Endpoint = $FQDN:$ListenPort" >> $CLTFILE
 		echo "AllowedIPs = $NetworksOverVPN" >> $CLTFILE
-		
-		echo "..."		
-		C=$(( $C + 1 ))  
+		[[ "$PERSIST" == "1" ]] && echo "PersistentKeepalive = 25" >> $CLTFILE || echo "no Persistance set"
+
+		echo "..."
+		C=$(( $C + 1 ))
 	   done
-	  	  
+
 	  #echo "..."
 	  S=$(( $S + 1 ))
 	 done
